@@ -28,6 +28,7 @@ build/
 backend/.env
 frontend/.env
 !*.env.example
+!frontend/.env.production
 
 # OS / Editor files
 .DS_Store

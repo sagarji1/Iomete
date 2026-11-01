@@ -11,7 +11,22 @@ import {
 } from "./types";
 
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+const getApiBaseUrl = (): string => {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (typeof window !== "undefined") {
+    const host = window.location.hostname;
+    if (host !== "localhost" && host !== "127.0.0.1") {
+      return "https://iomete.onrender.com/api";
+    }
+  }
+  return process.env.NODE_ENV === "production"
+    ? "https://iomete.onrender.com/api"
+    : "http://localhost:8000/api";
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 export async function fetchHealth() {
   const res = await fetch(`${API_BASE_URL}/health`);

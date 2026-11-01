@@ -2,11 +2,16 @@
 > **AI-Powered Enterprise Sales Intelligence & Product Experience Platform**  
 > *Master Build Prompt v2 — HackCBS MVP Spec*
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://iomete-six.vercel.app/)
+[![API Backend](https://img.shields.io/badge/API%20Live-Render-46E3B7?logo=render)](https://iomete.onrender.com/docs)
 [![Python Tests](https://img.shields.io/badge/pytest-10%20passed-brightgreen)](#)
 [![Next.js](https://img.shields.io/badge/Next.js-16%20Turbopack-black)](#)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688)](#)
-[![Design](https://img.shields.io/badge/UI-BioForge%20Precision%20Instrument-42D6A4)](#)
-[![SQLite](https://img.shields.io/badge/Datastore-SQLite%20Zero--Setup-blue)](#)
+[![Database](https://img.shields.io/badge/Datastore-Neon%20Serverless%20Postgres-00E599)](#)
+
+* **Live Frontend Web App**: [https://iomete-six.vercel.app/](https://iomete-six.vercel.app/)
+* **Live Backend API**: [https://iomete.onrender.com/](https://iomete.onrender.com/)
+* **Interactive API Docs (Swagger)**: [https://iomete.onrender.com/docs](https://iomete.onrender.com/docs)
 
 ---
 

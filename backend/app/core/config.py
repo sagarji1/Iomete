@@ -16,7 +16,8 @@ class Settings(BaseSettings):
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:3001",
-        "http://localhost:8000"
+        "http://localhost:8000",
+        "https://iomete-six.vercel.app"
     ]
     
     # Optional AI Keys (Purely optional, system works 100% deterministically without them)
