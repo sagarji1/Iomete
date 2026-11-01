@@ -1,0 +1,100 @@
+[
+  {
+    "id": "prospect-acme-bank",
+    "company_name": "Acme Bank",
+    "industry": "Banking & Financial Services",
+    "company_size": "5,000 - 10,000 employees",
+    "region": "European Union / UK",
+    "current_platform": "Snowflake",
+    "approximate_data_volume": "120 TB",
+    "deployment_preference": "On-premises",
+    "is_regulated_industry": "Yes",
+    "current_infrastructure": "Hybrid (On-premises VMware + AWS eu-west-1)",
+    "cloud_provider": "AWS",
+    "storage_environment": "MinIO on-premises + AWS S3",
+    "analytics_engine": "Snowflake Virtual Warehouses",
+    "bi_tools": "PowerBI, Tableau",
+    "data_engineering_workflow": "dbt + Airflow",
+    "monthly_infrastructure_spend": 85000,
+    "operational_challenges": "Skyrocketing quarterly Snowflake credits, regulator audit scrutiny over cross-border data transfer, executive mandate for sovereign on-premises storage.",
+    "challenges": [
+      "Rising cloud infrastructure costs",
+      "Vendor lock-in",
+      "Data sovereignty and privacy",
+      "Strict data residency",
+      "Infrastructure control"
+    ],
+    "context_notes": "Tier-1 retail bank under EBA regulatory supervision. Board mandated on-premises data residency for PII transactions. Cloud warehouse bill grew 65% year-over-year.",
+    "stakeholder_priorities": [
+      "CISO",
+      "CFO",
+      "CTO",
+      "Data Engineering Head"
+    ]
+  },
+  {
+    "id": "prospect-nova-retail",
+    "company_name": "Nova Retail",
+    "industry": "Retail & E-commerce",
+    "company_size": "2,000 - 5,000 employees",
+    "region": "North America",
+    "current_platform": "Databricks",
+    "approximate_data_volume": "450 TB",
+    "deployment_preference": "Hybrid",
+    "is_regulated_industry": "No",
+    "current_infrastructure": "AWS + Azure multi-cloud",
+    "cloud_provider": "AWS",
+    "storage_environment": "AWS S3 + Delta Lake",
+    "analytics_engine": "Databricks SQL & Spark",
+    "bi_tools": "Looker, Apache Superset",
+    "data_engineering_workflow": "Airflow + PySpark",
+    "monthly_infrastructure_spend": 140000,
+    "operational_challenges": "Complex multi-cloud data sprawl, high DBU consumption for recurring scheduled ETL batch jobs, high egress charges between clouds.",
+    "challenges": [
+      "Rising cloud infrastructure costs",
+      "Complex data architecture",
+      "Performance and scalability",
+      "Operational complexity",
+      "Vendor lock-in"
+    ],
+    "context_notes": "Omnichannel retail platform with high seasonal spikes (Black Friday). Need predictable compute pricing for ETL batch jobs without proprietary runtime surcharges.",
+    "stakeholder_priorities": [
+      "CFO",
+      "CTO",
+      "Analytics Leader",
+      "Data Engineering Head"
+    ]
+  },
+  {
+    "id": "prospect-vertex-health",
+    "company_name": "Vertex Health",
+    "industry": "Healthcare & Life Sciences",
+    "company_size": "1,000 - 2,500 employees",
+    "region": "North America",
+    "current_platform": "Google BigQuery",
+    "approximate_data_volume": "85 TB",
+    "deployment_preference": "Private Cloud",
+    "is_regulated_industry": "Yes",
+    "current_infrastructure": "Google Cloud (GKE + Cloud Storage)",
+    "cloud_provider": "GCP",
+    "storage_environment": "Google Cloud Storage (GCS)",
+    "analytics_engine": "BigQuery",
+    "bi_tools": "Tableau, Metabase",
+    "data_engineering_workflow": "Prefect + dbt",
+    "monthly_infrastructure_spend": 62000,
+    "operational_challenges": "HIPAA compliance requirements restrict multi-tenant SaaS. Need direct Spark access to raw imaging and genomic data without moving files outside customer VPC.",
+    "challenges": [
+      "Data sovereignty and privacy",
+      "Infrastructure control",
+      "Strict data residency",
+      "AI and analytics readiness",
+      "Vendor lock-in"
+    ],
+    "context_notes": "Precision oncology platform. Requires dedicated Kubernetes-based lakehouse compute inside their dedicated VPC so patient data never leaves HIPAA security perimeter.",
+    "stakeholder_priorities": [
+      "CISO",
+      "CIO",
+      "Analytics Leader"
+    ]
+  }
+]

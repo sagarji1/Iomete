@@ -1,0 +1,166 @@
+[
+  {
+    "competitor": "Snowflake",
+    "priority": "Cost predictability",
+    "position_statement": "Credit-based consumption model with auto-scaling compute warehouses billed per second (minimum 60s). Compute credit cost scales with warehouse sizes (XS to 6X-Large); unmonitored concurrent queries or background auto-clustering can lead to unpredictable quarterly invoices.",
+    "source_title": "Snowflake Warehouse Sizing & Credit Consumption Guide",
+    "source_url": "https://docs.snowflake.com/en/user-guide/warehouses-overview",
+    "verification_status": "verified_official",
+    "qualification": "Predictability can be constrained via resource monitors and max credit quotas set by account administrators."
+  },
+  {
+    "competitor": "Snowflake",
+    "priority": "Vendor lock-in / portability",
+    "position_statement": "Default tables use proprietary Micro-Partition FDN format stored inside Snowflake-managed accounts. While Snowflake now supports external Apache Iceberg tables (via Snowflake Managed or External Catalog), writing to Iceberg tables still consumes standard Snowflake virtual warehouse credits.",
+    "source_title": "Snowflake Iceberg Tables Documentation",
+    "source_url": "https://docs.snowflake.com/en/user-guide/tables-iceberg",
+    "verification_status": "verified_official",
+    "qualification": "Iceberg read/write feature requires table conversion or explicit Iceberg table creation."
+  },
+  {
+    "competitor": "Snowflake",
+    "priority": "Data sovereignty & deployment control",
+    "position_statement": "Multi-tenant SaaS architecture running in public cloud regions (AWS, Azure, GCP). Snowflake does not offer self-hosted on-premises deployment or customer-managed bare metal Kubernetes installation. Data and metadata reside in vendor cloud infrastructure.",
+    "source_title": "Snowflake Architecture & Security Whitepaper",
+    "source_url": "https://www.snowflake.com/en/data-cloud/security-and-trust/",
+    "verification_status": "verified_official",
+    "qualification": "PrivateLink and customer-managed encryption keys (Tri-Secret Secure) are available on Business Critical Edition."
+  },
+  {
+    "competitor": "Snowflake",
+    "priority": "Performance at stated volume",
+    "position_statement": "High concurrency SQL query acceleration via multi-cluster virtual warehouses. Ideal for ad-hoc business intelligence and SQL analytics. Large-scale iterative machine learning or streaming batch ETL often requires separate compute tooling or Snowpark container runtime.",
+    "source_title": "Snowpark Developer Guide & Warehouse Concurrency",
+    "source_url": "https://docs.snowflake.com/en/developer-guide/snowpark/index",
+    "verification_status": "verified_official",
+    "qualification": "Snowpark runs within Snowflake's sandbox environment with memory bounds per warehouse node."
+  },
+  {
+    "competitor": "Snowflake",
+    "priority": "Migration effort",
+    "position_statement": "Requires porting proprietary SQL functions (e.g. JavaScript stored procedures, Snowpipe configs, Streams & Tasks) to open standards (dbt, ANSI SQL, PySpark) when moving workloads out of Snowflake.",
+    "source_title": "Snowflake SQL Reference & Migration Considerations",
+    "source_url": "https://docs.snowflake.com/en/sql-reference/",
+    "verification_status": "verified_official",
+    "qualification": "Standard ANSI SELECT and DDL queries are straightforward to replicate on Apache Spark."
+  },
+  {
+    "competitor": "Snowflake",
+    "priority": "Governance & security",
+    "position_statement": "Native tag-based masking, row-level access policies, and object tagging managed via Snowflake SQL DDL. Governance policies apply to queries executing within Snowflake engine.",
+    "source_title": "Snowflake Column & Row-Level Governance Policies",
+    "source_url": "https://docs.snowflake.com/en/user-guide/security-row-intro",
+    "verification_status": "verified_official",
+    "qualification": "Does not govern external direct object storage reads without catalog federation."
+  },
+
+  {
+    "competitor": "Databricks",
+    "priority": "Cost predictability",
+    "position_statement": "Dual-billing structure: Databricks Units (DBU) consumption fee charged by Databricks plus underlying cloud VM infrastructure costs charged directly by AWS/Azure/GCP. Jobs compute clusters vs All-Purpose interactive compute have different DBU rates.",
+    "source_title": "Databricks Pricing & DBU Calculation Overview",
+    "source_url": "https://www.databricks.com/product/pricing",
+    "verification_status": "verified_official",
+    "qualification": "Job clusters are priced lower per DBU than interactive developer clusters."
+  },
+  {
+    "competitor": "Databricks",
+    "priority": "Vendor lock-in / portability",
+    "position_statement": "Native format is Delta Lake open source format. Databricks UniForm now enables Delta tables to read as Iceberg metadata, though advanced execution features (Photon engine, Liquid Clustering) rely on proprietary Databricks runtime extensions.",
+    "source_title": "Databricks Universal Format (UniForm) & Delta Lake",
+    "source_url": "https://docs.databricks.com/en/delta/uniform.html",
+    "verification_status": "verified_official",
+    "qualification": "UniForm generates Iceberg metadata asynchronously; pure Iceberg write paths are not primary."
+  },
+  {
+    "competitor": "Databricks",
+    "priority": "Data sovereignty & deployment control",
+    "position_statement": "Classic architecture runs data plane inside customer cloud VPC (AWS/Azure/GCP), while the control plane is managed by Databricks SaaS. Databricks does not support on-premises bare-metal data centre installation.",
+    "source_title": "Databricks Architecture & Security Guide",
+    "source_url": "https://docs.databricks.com/en/security/index.html",
+    "verification_status": "verified_official",
+    "qualification": "Serverless compute runs inside Databricks-owned cloud accounts rather than customer VPC."
+  },
+  {
+    "competitor": "Databricks",
+    "priority": "Performance at stated volume",
+    "position_statement": "Built on Apache Spark with proprietary Photon C++ vectorized query engine for high-scale batch ETL, machine learning, and data science. Highly performant for multi-terabyte data transformation.",
+    "source_title": "Databricks Photon Engine Architecture",
+    "source_url": "https://www.databricks.com/product/technology/photon",
+    "verification_status": "verified_official",
+    "qualification": "Photon compute requires higher DBU consumption tier than standard Spark runtime."
+  },
+  {
+    "competitor": "Databricks",
+    "priority": "Migration effort",
+    "position_statement": "Workloads written in PySpark or Delta Lake transfer relatively easily to Apache Iceberg and standard Spark clusters. Proprietary Databricks Workflows or Delta Live Tables (DLT) require re-orchestration in Airflow or standard dbt.",
+    "source_title": "Databricks Delta Live Tables & Workflow Specs",
+    "source_url": "https://docs.databricks.com/en/delta-live-tables/index.html",
+    "verification_status": "verified_official",
+    "qualification": "Standard PySpark scripts have high portability."
+  },
+  {
+    "competitor": "Databricks",
+    "priority": "Governance & security",
+    "position_statement": "Unity Catalog provides centralized access control, lineage, and audit logs across workspaces in cloud regions.",
+    "source_title": "Databricks Unity Catalog Architecture",
+    "source_url": "https://www.databricks.com/product/unity-catalog",
+    "verification_status": "verified_official",
+    "qualification": "Requires Unity Catalog metastore configuration and cloud object store permissions setup."
+  },
+
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Cost predictability",
+    "position_statement": "Offers both on-demand pricing ($6.25 per TB scanned) and edition-based slot capacity commitments (Standard, Enterprise, Enterprise Plus). On-demand queries can produce volatile bills with unpartitioned petabyte scans.",
+    "source_title": "Google Cloud BigQuery Pricing Model",
+    "source_url": "https://cloud.google.com/bigquery/pricing",
+    "verification_status": "verified_official",
+    "qualification": "Editions provide baseline slot reservation and auto-scaling upper caps."
+  },
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Vendor lock-in / portability",
+    "position_statement": "Primary storage is Google Capacitor columnar format within Google Cloud Storage. BigQuery BigLake supports reading external Apache Iceberg tables in GCS, S3, and Azure with federated queries.",
+    "source_title": "BigQuery BigLake Architecture Guide",
+    "source_url": "https://cloud.google.com/bigquery/docs/biglake-intro",
+    "verification_status": "verified_official",
+    "qualification": "BigLake queries are billed per TB processed by the BigQuery engine."
+  },
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Data sovereignty & deployment control",
+    "position_statement": "Serverless Google Cloud managed SaaS. Does not deploy to on-premises data centres or customer-managed bare metal servers.",
+    "source_title": "Google Cloud Infrastructure & Locations",
+    "source_url": "https://cloud.google.com/about/locations",
+    "verification_status": "verified_official",
+    "qualification": "BigQuery Omni allows running queries on AWS/Azure storage using Google-managed compute clusters."
+  },
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Performance at stated volume",
+    "position_statement": "Massively parallel serverless architecture capable of scanning terabytes in seconds. Highly optimized for SQL data warehousing and analytics queries.",
+    "source_title": "BigQuery Architecture Under the Hood",
+    "source_url": "https://cloud.google.com/blog/products/bigquery/bigquery-under-the-hood",
+    "verification_status": "verified_official",
+    "qualification": "Complex iterative ML algorithms usually require BigQuery ML or Vertex AI integration."
+  },
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Migration effort",
+    "position_statement": "GoogleSQL dialect differences and BigQuery-specific dataset structures require query syntax updates during migration.",
+    "source_title": "Migrating to Google Cloud BigQuery",
+    "source_url": "https://cloud.google.com/bigquery/docs/migration-intro",
+    "verification_status": "verified_official",
+    "qualification": "Standard SQL translation tools exist for common dialects."
+  },
+  {
+    "competitor": "Google BigQuery",
+    "priority": "Governance & security",
+    "position_statement": "Cloud IAM integration, column-level security tags, and Dataplex data governance.",
+    "source_title": "BigQuery Column-level Access Control",
+    "source_url": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+    "verification_status": "verified_official",
+    "qualification": "Tightly coupled with Google Cloud IAM and Google Organization hierarchy."
+  }
+]

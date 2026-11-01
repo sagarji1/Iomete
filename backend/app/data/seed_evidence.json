@@ -1,0 +1,136 @@
+[
+  {
+    "id": "EVID-OPEN-01",
+    "claim": "Open table formats (Apache Iceberg) prevent proprietary vendor lock-in and enable zero data copy across analytical engines.",
+    "capability_category": "Open Architecture",
+    "description": "IOMETE is architected natively around Apache Iceberg open table formats and Parquet files stored directly in customer-owned object storage (S3, GCS, Azure Blob, or MinIO/Ceph on-prem). Data remains in standard open formats accessible by any Iceberg-compliant engine without extraction or vendor egress penalties.",
+    "source_title": "IOMETE Open Source Architecture & Principles",
+    "source_url": "https://iomete.com/product/architecture/open-source",
+    "source_type": "official_documentation",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-01-15",
+    "qualification_or_limitation": "Requires migration or in-place registration of existing data files into Apache Iceberg table format; requires underlying object storage infrastructure.",
+    "related_objections": [
+      "vendor_lock_in",
+      "existing_architecture",
+      "snowflake_comparison"
+    ]
+  },
+  {
+    "id": "EVID-SOV-02",
+    "claim": "Complete Data Sovereignty: Data and compute reside entirely inside the customer's own cloud VPC or on-premises data centre.",
+    "capability_category": "Data Sovereignty",
+    "description": "Unlike multi-tenant SaaS platforms where data or query metadata leaves customer perimeters, IOMETE installs directly into the customer's Kubernetes environment (EKS, GKE, AKS, OpenShift, or bare-metal Kubernetes). The control plane can also run self-hosted or air-gapped, ensuring sensitive data never crosses external network boundaries.",
+    "source_title": "Self-Hosted Data Platform & Private Cloud Architecture",
+    "source_url": "https://iomete.com/resources/blog/self-hosted-data-platform-private-cloud-architecture",
+    "source_type": "technical_whitepaper",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-01-20",
+    "qualification_or_limitation": "Customer is responsible for providing and maintaining the underlying Kubernetes infrastructure and object storage resources.",
+    "related_objections": [
+      "sensitive_data",
+      "data_sovereignty",
+      "on_premises_requirement"
+    ]
+  },
+  {
+    "id": "EVID-BANK-03",
+    "claim": "Proven on-premises Lakehouse reference architecture for highly regulated banking and financial institutions.",
+    "capability_category": "On-premises Deployment",
+    "description": "IOMETE provides a validated deployment pattern for tier-1 financial institutions requiring strict regulatory compliance, network isolation (air-gapped/on-premises bare metal), and strict data residency without compromising modern SQL analytics or Spark workloads.",
+    "source_title": "On-Premises Lakehouse Reference Architecture for Banks",
+    "source_url": "https://iomete.com/resources/blog/on-premises-lakehouse-reference-architecture-banks",
+    "source_type": "technical_reference",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-02-01",
+    "qualification_or_limitation": "Hardware sizing, SAN/NAS/MinIO performance, and local high-availability topologies must be reviewed during technical discovery.",
+    "related_objections": [
+      "sensitive_data",
+      "on_premises_requirement",
+      "migration_risk"
+    ]
+  },
+  {
+    "id": "EVID-COST-04",
+    "claim": "Predictable workload-based compute economics without proprietary query markup or hidden egress overhead.",
+    "capability_category": "Cost Optimisation",
+    "description": "IOMETE separates compute from storage and utilizes isolated, autoscaling Apache Spark clusters per department or workload. Because users run clusters on their own negotiated cloud/hardware compute instances, they avoid the 3x-5x credit markup typical of proprietary SaaS data warehouses.",
+    "source_title": "IOMETE Design Principles: Compute & Storage Decoupling",
+    "source_url": "https://iomete.com/product/data-platform/design-principles",
+    "source_type": "official_documentation",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-01-10",
+    "qualification_or_limitation": "Actual financial savings depend on workload concurrency, cluster utilization efficiency, and baseline cloud discounting vs. current Snowflake/Databricks commitments.",
+    "related_objections": [
+      "cloud_costs",
+      "snowflake_comparison",
+      "vendor_lock_in"
+    ]
+  },
+  {
+    "id": "EVID-SEC-05",
+    "claim": "Enterprise-grade fine-grained access control (RBAC), row/column masking, and Apache Ranger integration.",
+    "capability_category": "Governance and Security",
+    "description": "Unified governance engine providing column-level masking, row-level filtering, tag-based policies, and comprehensive audit logging across all SQL and programmatic Spark queries.",
+    "source_title": "IOMETE Security & Data Governance Specification",
+    "source_url": "https://iomete.com/product/data-platform/design-principles",
+    "source_type": "official_documentation",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-02-10",
+    "qualification_or_limitation": "Active Directory/LDAP/Okta identity provider integration requires configuration during initial onboarding.",
+    "related_objections": [
+      "sensitive_data",
+      "governance_compliance"
+    ]
+  },
+  {
+    "id": "EVID-PERF-06",
+    "claim": "Sovereign Lakehouse Proof at Scale: High-throughput ingestion and sub-second BI query acceleration over Iceberg metadata.",
+    "capability_category": "Apache Spark & Performance",
+    "description": "Optimized Spark query engine combined with Iceberg metadata indexing and file pruning delivers interactive SQL performance for BI tools (PowerBI, Tableau, Superset) while handling petabyte-scale batch pipelines.",
+    "source_title": "Sovereign Lakehouse Proof at Scale",
+    "source_url": "https://iomete.com/resources/blog/sovereign-lakehouse-proof-at-scale",
+    "source_type": "case_study",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-01-28",
+    "qualification_or_limitation": "Interactive sub-second query performance on complex joins requires appropriate cluster sizing and partitioning strategies.",
+    "related_objections": [
+      "performance_scalability",
+      "existing_architecture",
+      "snowflake_comparison"
+    ]
+  },
+  {
+    "id": "EVID-MIGR-07",
+    "claim": "Coexistence and phased migration: IOMETE can query existing object storage and operate alongside Snowflake/Databricks without rip-and-replace.",
+    "capability_category": "Architecture Migration",
+    "description": "Because IOMETE runs on open formats, enterprises can register existing Parquet/Iceberg datasets and run specific high-cost or data-sensitive workloads on IOMETE while maintaining existing BI dashboards and upstream pipelines.",
+    "source_title": "IOMETE Platform Architecture Overview",
+    "source_url": "https://iomete.com/",
+    "source_type": "official_documentation",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-02-15",
+    "qualification_or_limitation": "Proprietary Snowflake-specific SQL dialect scripts or stored procedures require compatibility mapping before migration.",
+    "related_objections": [
+      "migration_risk",
+      "existing_architecture",
+      "snowflake_comparison"
+    ]
+  },
+  {
+    "id": "EVID-AI-08",
+    "claim": "Unified Lakehouse foundation for Generative AI and ML workloads without data movement.",
+    "capability_category": "Analytics and AI",
+    "description": "Direct Python, PySpark, and notebook integration with Iceberg tables allows data science and ML engineering teams to train and fine-tune models directly within the secure perimeter without extracting data into third-party vector or feature stores.",
+    "source_title": "IOMETE Mission & Product Overview",
+    "source_url": "https://iomete.com/about-us",
+    "source_type": "official_documentation",
+    "verification_status": "verified_official",
+    "last_verified_date": "2025-02-12",
+    "qualification_or_limitation": "GPU scheduling requires Kubernetes cluster nodes configured with compatible NVIDIA drivers.",
+    "related_objections": [
+      "ai_readiness",
+      "sensitive_data"
+    ]
+  }
+]
